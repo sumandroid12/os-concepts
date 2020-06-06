@@ -22,6 +22,7 @@ int board[N][N] = {{6, 2, 4, 5, 3, 9, 1, 8, 7},
                    {2, 8, 5, 4, 7, 3, 9, 1, 6}};
 int results[11] = {0};
 
+// check whether elements are unique
 int validate(int *arr[N])
 {
     int hash[N] = {0};
@@ -42,6 +43,7 @@ void *row_thread(void *result)
         {
             arr[j] = &board[j][i];
         }
+        // check whether each row consists of unique elements
         if (validate(arr) == 0)
         {
             *((int *)result) = 0;
@@ -60,6 +62,7 @@ void *col_thread(void *result)
         {
             arr[j] = &board[i][j];
         }
+        // check whether each column consists of unique elements
         if (validate(arr) == 0)
         {
             *((int *)result) = 0;
@@ -70,6 +73,7 @@ void *col_thread(void *result)
     pthread_exit(0);
 }
 
+// check whether each grid consists of unique elements
 void *grid_thread(void *result)
 {
     parameters *data = (parameters *)result;
@@ -95,6 +99,7 @@ void *grid_thread(void *result)
 
 int main(int argc, char *argv[])
 {
+    /* 11 Threads: 9 for grid 1 for columns 1 for rows */
     pthread_t threads[11];
     pthread_attr_t attr;
     pthread_attr_init(&attr);

@@ -38,6 +38,7 @@ void merge_sorted(int low, int mid, int high)
     int low2 = mid + 1;
     while (i < n)
     {
+        /* probably not optimizable ;) */
         if (low2 <= high && low <= mid && arr[low] < arr[low2])
             sub[i++] = arr[low++];
         else if (low2 <= high && low <= mid && arr[low] > arr[low2])

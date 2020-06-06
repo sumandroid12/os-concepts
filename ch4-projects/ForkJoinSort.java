@@ -1,6 +1,8 @@
-import java.util.concurrent.*;
+// fork_join sort using quicksort
 
-public class SortAction extends RecursiveAction {
+import java.util.concurrent.*; 
+
+public class ForkJoinSort extends RecursiveAction {
     /**
      *
      */
@@ -10,7 +12,7 @@ public class SortAction extends RecursiveAction {
     private int r;
     private int array[];
 
-    public SortAction(int begin, int end, int array[]) {
+    public ForkJoinSort(int begin, int end, int array[]) {
         this.p = begin;
         this.r = end;
         this.array = array;
@@ -59,8 +61,8 @@ public class SortAction extends RecursiveAction {
             array[r] = array[i];
             array[i] = tmp;
 
-            SortAction leftTask = new SortAction(p, i - 1, array);
-            SortAction rightTask = new SortAction(i + 1, r, array);
+            ForkJoinSort leftTask = new ForkJoinSort(p, i - 1, array);
+            ForkJoinSort rightTask = new ForkJoinSort(i + 1, r, array);
 
             leftTask.fork();
             rightTask.fork();
@@ -72,7 +74,7 @@ public class SortAction extends RecursiveAction {
     public static void main(String[] args) {
         int arr[] = { 3, 4, 5, 62, 6, 763, 7, 57, 4, 7, 47, 4, 3, 8, 684, 58, 45, 6, 456, 848, 64, 58 };
         ForkJoinPool pool = new ForkJoinPool();
-        SortAction st = new SortAction(0, arr.length - 1, arr);
+        ForkJoinSort st = new ForkJoinSort(0, arr.length - 1, arr);
         pool.invoke(st);
         for (int i : arr) {
             System.out.print(i + " ");
