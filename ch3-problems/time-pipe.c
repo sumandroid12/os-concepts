@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 	}
 	else{
 		close(fd[WRITE_END]);
-		wait(NULL);
 		struct timeval end,start;
+		wait(NULL);
 		gettimeofday(&end,NULL);
 		read(fd[READ_END],&start,sizeof(struct timeval));
 		close(fd[READ_END]);

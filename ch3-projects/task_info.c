@@ -4,7 +4,7 @@
  * Kernel module that communicates with /proc file system.
  * 
  * The makefile must be modified to compile this program.
- * Change the line "simple.o" to "hello.o"
+ * Change the line "xxx.o" to "task_info.o"
  *
  * Operating System Concepts - 10th Edition
  * Copyright John Wiley & Sons - 2018

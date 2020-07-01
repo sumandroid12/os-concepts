@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
             *data = input; 
             data++; count++;
         } 
+        /* set size of array at the beginning*/ 
         *head=count;
     }
     else
