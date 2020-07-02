@@ -54,6 +54,7 @@ void schedule()
     int slice;
     Task *curr_task;
     curr_task_node = priority_q_head[0];
+    pickNextTask();
     while (curr_task_node != NULL)
     {
         curr_task = curr_task_node->task;
